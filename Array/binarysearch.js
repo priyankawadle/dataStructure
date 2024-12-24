@@ -16,28 +16,26 @@
 // console.log(binarySearch(arr, 40))
 
 // Recursive Approach
-let arr = [10, 20, 40, 60, 70];
-let start = 0;
-let end = arr.length - 1;
-let find = 20;
-
-function recursiveCall(arr, start, end) {
-    if (start > end) {
-        return -1; // Element not found
+function binarySearch(arr, find) {
+    let start = 0;
+    let end = arr.length - 1;
+  
+    function recursiveCall(start, end) {
+      let mid = Math.floor((start + end) / 2);
+      if (arr[mid] == find) {
+        return true;
+      } else if (arr[mid] > find) {
+        return recursiveCall(start, mid - 1);
+      } else if (arr[mid] < find) {
+        return recursiveCall(mid + 1, end);
+      }
     }
-    let mid = Math.floor((start + end) / 2);
-    console.log(start,end,mid)
-    if (arr[mid] === find) {
-        return mid;
-    } else if (arr[mid] < find) {
-       return  recursiveCall(arr, mid + 1, end);
-    } else {
-       return recursiveCall(arr, start, mid - 1);
-    }
-}
-console.log(recursiveCall(arr, start, end))
-
-
+    return recursiveCall(start, end);
+  }
+  
+  const result = binarySearch([10, 30, 40, 50], 50);
+  console.log(result);
+  
 
 
 
