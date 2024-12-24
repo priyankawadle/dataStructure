@@ -15,13 +15,6 @@ function areAnagrams(str1, str2) {
     let count1 = countChars(str1);
     let count2 = countChars(str2);
 
-    // Compare character counts
-    for (let char in count1) {
-        if (count1[char] !== count2[char]) {
-            return false;
-        }
-    }
-
     // Ensure both strings have the same characters
     for (let char in count2) {
         if (count1[char] !== count2[char]) {
