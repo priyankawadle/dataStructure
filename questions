@@ -32,24 +32,188 @@ Given two arrays, write a function to return an array of elements that appear in
 Objects
 Deep Clone an Object:
 Write a function to create a deep clone of a given object.
+// function deepClone(obj) {
+//     // Handle null and non-object values (primitives)
+//     if (obj === null || typeof obj !== "object") {
+//         return obj;
+//     }
 
+//     // Create an array or object to hold the cloned values
+//     const clone = Array.isArray(obj) ? [] : {};
+
+//     // Recursively copy each key-value pair
+//     for (const key in obj) {
+//         if (obj.hasOwnProperty(key)) {
+//             clone[key] = deepClone(obj[key]); // Recursively clone each property
+//         }
+//     }
+
+//     return clone;
+// }
+
+// // Example usage
+// const original = {
+//     name: "John",
+//     age: 30,
+//     address: {
+//         city: "New York",
+//         zip: 10001,
+//     },
+//     hobbies: ["reading", "gaming"],
+// };
+
+// const cloned = deepClone(original);
+
+// // Modify the clone
+// cloned.address.city = "Los Angeles";
+// cloned.hobbies.push("swimming");
+
+// console.log("Original:", original);
+// console.log("Cloned:", cloned);
 Flatten Nested Object:
 Given a deeply nested object, write a function to flatten it into a single-level object.
+// function flattenObject(obj) {
+//     const result = {};
+
+//     function flatten(current, parentKey = '') {
+//         for (const key in current) {
+//             if (current.hasOwnProperty(key)) {
+//                 const newKey = parentKey ? `${parentKey}.${key}` : key;
+
+//                 if (typeof current[key] === 'object' && current[key] !== null && !Array.isArray(current[key])) {
+//                     flatten(current[key], newKey); // Inline "recursion" for nested objects
+//                 } else {
+//                     result[newKey] = current[key];
+//                 }
+//             }
+//         }
+//     }
+
+//     flatten(obj);
+//     return result;
+// }
+
+// // Example usage
+// const nestedObj = {
+//     name: "John",
+//     address: {
+//         city: "New York",
+//         zip: {
+//             code: 10001,
+//             extended: 1234,
+//         },
+//     },
+//     hobbies: ["reading", "gaming"],
+// };
+
+// const flatObj = flattenObject(nestedObj);
+// console.log(flatObj);
 
 Convert Object to Query String:
 Write a function to convert a JavaScript object into a URL query string.
 
 Merge Two Objects:
 Write a function that merges two objects, where the second object overrides properties in the first object if they exist.
+// function mergeObjects(obj1, obj2) {
+//     const merged = {};
+
+//     // Copy all properties from obj1
+//     for (const key in obj1) {
+//         if (obj1.hasOwnProperty(key)) {
+//             merged[key] = obj1[key];
+//         }
+//     }
+
+//     // Override or add properties from obj2
+//     for (const key in obj2) {
+//         if (obj2.hasOwnProperty(key)) {
+//             merged[key] = obj2[key];
+//         }
+//     }
+
+//     return merged;
+// }
+
+// // Example usage
+// const obj1 = {
+//     name: "John",
+//     age: 30,
+//     address: {
+//         city: "New York",
+//         zip: 10001,
+//     },
+// };
+
+// const obj2 = {
+//     age: 35,
+//     address: {
+//         city: "Los Angeles",
+//     },
+//     profession: "Developer",
+// };
+
+// const mergedObj = mergeObjects(obj1, obj2);
+// console.log(mergedObj);
 
 Group Objects by Property:
 Given an array of objects, write a function to group them by a specific property.
+// function groupBy(array, property) {
+//     const result = {}; // Initialize an empty object
+
+//     for (let i = 0; i < array.length; i++) {
+//         const key = array[i][property]; // Get the value of the specified property
+//         if (!result[key]) {
+//             result[key] = []; // Initialize the group if it doesn't exist
+//         }
+//         result[key].push(array[i]); // Add the object to the group
+//     }
+
+//     return result;
+// }
+
+// // Example usage
+// const data = [
+//     { id: 1, category: "fruit", name: "apple" },
+//     { id: 2, category: "vegetable", name: "carrot" },
+//     { id: 3, category: "fruit", name: "banana" },
+//     { id: 4, category: "vegetable", name: "spinach" },
+//     { id: 5, category: "fruit", name: "grape" },
+// ];
+
+// const groupedData = groupBy(data, "category");
+// console.log(groupedData);
 
 Check for Cyclic References in Object:
 Write a function that checks whether an object contains cyclic references.
 
 Count Property Occurrences in Array of Objects:
 Given an array of objects, write a function to count the occurrences of a specific property value.
+// function countPropertyOccurrences(array, property) {
+//     const counts = {};
+
+//     for (let i = 0; i < array.length; i++) {
+//         const value = array[i][property]; // Get the value of the specified property
+//         if (value in counts) {
+//             counts[value]++; // Increment the count if it already exists
+//         } else {
+//             counts[value] = 1; // Initialize the count for a new value
+//         }
+//     }
+
+//     return counts;
+// }
+
+// // Example usage
+// const data = [
+//     { id: 1, category: "fruit" },
+//     { id: 2, category: "vegetable" },
+//     { id: 3, category: "fruit" },
+//     { id: 4, category: "vegetable" },
+//     { id: 5, category: "fruit" },
+// ];
+
+// const counts = countPropertyOccurrences(data, "category");
+// console.log(counts);
 
 Object Transformation:
 Write a function that transforms an object by applying a specific function to its values.
