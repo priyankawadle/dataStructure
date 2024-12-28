@@ -72,6 +72,22 @@ class LinkedList{
         this.size += 1;
     }
 
+    reverseNode(){
+
+        let prev=null;
+        let next;
+        let current=this.head;
+        this.tail=current;
+        while(current !== null){
+            next = current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        this.head=prev;
+
+    }
+
 }
 const list = new LinkedList(100);
 list.appendNode(200);
@@ -83,6 +99,9 @@ list.insertNode(1,120)
 list.insertNode(2,130)
 console.log("list is",list);
 // console.log(list.tail)
+list.reverseNode();
+console.log("reverse list",list);
+
 
 
 
